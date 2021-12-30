@@ -32,6 +32,7 @@ class WatchFace1View extends WatchUi.WatchFace {
         setClockDisplay();
         setDateDisplay();
         setFloorCountDisplay(); 
+        setMoveBarDisplay();
 
         // Call the parent onUpdate function to redraw the layout
         View.onUpdate(dc);
@@ -55,6 +56,29 @@ class WatchFace1View extends WatchUi.WatchFace {
 
     // Terminate any active timers and prepare for slow updates.
     function onEnterSleep() as Void {
+    }
+
+    private function setMoveBarDisplay() {
+    	var MoveBarValue = Mon.getInfo().moveBarLevel.toNumber();
+        var MoveBarDisplay = View.findDrawableById("MoveBarDisplay");
+
+        if(MoveBarValue == 0) {
+            MoveBarDisplay.setText("-");
+        } else if(MoveBarValue == 1) {
+            MoveBarDisplay.setText("•");
+        } else if(MoveBarValue == 2) {
+            MoveBarDisplay.setText("••");
+        } else if(MoveBarValue == 3) {
+            MoveBarDisplay.setText("•••");
+        } else if(MoveBarValue == 4) {
+            MoveBarDisplay.setText("••••");
+        } else if(MoveBarValue == 5) {
+            MoveBarDisplay.setText("•••••");
+        } else {
+            MoveBarDisplay.setText("No movement");
+        }
+        //MoveBarDisplay.setText(MoveBarValue.toString());		
+        //System.println(MoveBarValue.toNumber());		
     }
 
     private function setStepCountDisplay() {
@@ -95,7 +119,6 @@ class WatchFace1View extends WatchUi.WatchFace {
     private function setDateDisplay() {        
     	var now = Time.now();
         var date = Date.info(now, Time.FORMAT_LONG);
-        //var dateString = Lang.format("$1$ $2$", [date.month, date.day]);
         var dateString = Lang.format("$1$", [date.day]);
         var monthString = Lang.format("$1$", [date.month]);
         var dateDisplay = View.findDrawableById("DateDisplay");
@@ -201,8 +224,6 @@ class WatchFace1View extends WatchUi.WatchFace {
             184, 
             4
         );
-
-
         //Elipse 2
         dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
         dc.fillEllipse(
@@ -229,8 +250,6 @@ class WatchFace1View extends WatchUi.WatchFace {
         var roundedWidth = newWidth.toNumber();	
 
 	    
-
-
 	    //Battery
         dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
         dc.drawRoundedRectangle(

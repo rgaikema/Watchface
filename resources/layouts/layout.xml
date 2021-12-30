@@ -6,4 +6,5 @@
     <label id="MonthDisplay" text="00" x="180" y="36" font="Gfx.FONT_XTINY" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_DK_GRAY" />
     <label id="FloorCountDisplay" text="00" x="13" y="190" font="Gfx.FONT_XTINY" justification="Gfx.TEXT_JUSTIFY_LEFT" color="Gfx.COLOR_DK_GRAY" />  
     <label id="BatteryDisplay" text="00" x="180" y="302" font="Gfx.FONT_XTINY" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_DK_GRAY" />
+    <label id="MoveBarDisplay" text="?" x="180" y="210" font="Gfx.FONT_XTINY" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_DK_GRAY" />
 </layout>
